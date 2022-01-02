@@ -21,7 +21,7 @@ internal final class MainView: UIView, UITableViewDelegate, UITableViewDataSourc
     init() {
         super.init(frame: .zero)
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -49,12 +49,13 @@ internal final class MainView: UIView, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.textLabel?.text = foods[indexPath.row]
+        let cell = CustomTableViewCell(text: foods[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as? CustomTableViewCell
+        cell?.onCellTap()
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
