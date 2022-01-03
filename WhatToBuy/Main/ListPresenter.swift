@@ -8,23 +8,33 @@
 import Foundation
 
 internal protocol ListPresenterActions {
-    func getData()
+    func addElement(title: String)
 }
 
 internal final class ListPresenter: ListPresenterActions {
     
-    private var view: ListViewWrapper? = nil
+    private var view: ListViewWrapperActions? = nil
 
-    func attachView(view: ListViewWrapper) {
+    func attachView(view: ListViewWrapperActions) {
         self.view = view
-        view.setupTableView()
+        getData()
     }
 
     func detachView() {
         view = nil
     }
     
-    func getData() {
-        view?.receiveData(foods: ["Мясо", "Картошка", "Апельсины", "Масло", "Колбаса", "Яйца", "Сыр"])
+    private func getData() {
+        view?.onDataReceived(elements: [Element(title: "Мясо", date: Date()),
+                                        Element(title: "Картошка", date: Date()),
+                                        Element(title: "Апельсины", date: Date()),
+                                        Element(title: "Масло", date: Date()),
+                                        Element(title: "Колбаса", date: Date())],
+                             chekedElements: [Element(title: "Яйца", date: Date()),
+                                              Element(title: "Сыр", date: Date())])
+    }
+    
+    func addElement(title: String) {
+        view?.insertElement(element: Element(title: title, date: Date()))
     }
 }

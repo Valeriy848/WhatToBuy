@@ -25,23 +25,30 @@ internal final class CustomTableViewCell: UITableViewCell {
     
     var tapBackgroundWidthAnchor: NSLayoutConstraint!
     
-    convenience init(text: String) {
+    convenience init(text: String, checked: Bool) {
         self.init(frame: .zero)
         title.text = text
+        setupUI(checked: checked)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .lightGray
-        setupUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupUI() {
+    private func setupUI(checked: Bool) {
         tapBackgroundWidthAnchor = tapBackground.widthAnchor.constraint(equalToConstant: 0)
+        
+        switch checked {
+        case true:
+            backgroundColor = .lightGray
+            title.attributedText = createStriketHroughStyle(text: title.text ?? "")
+        case false:
+            backgroundColor = .white
+        }
                 
         addSubview(tapBackground)
         NSLayoutConstraint.activate([
@@ -59,16 +66,21 @@ internal final class CustomTableViewCell: UITableViewCell {
             title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         ])
     }
-    
-    func onCellTap() {
-        let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: title.text ?? "")
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
 
-        title.attributedText = attributeString
+    func onCellTap(onTapAction: @escaping () -> Void) {
+        title.attributedText = createStriketHroughStyle(text: title.text ?? "")
         
         UIView.animate(withDuration: 0.3) {
             self.tapBackgroundWidthAnchor.constant = UIScreen.main.bounds.width
             self.layoutIfNeeded()
+        } completion: { _ in
+            onTapAction()
         }
+    }
+    
+    private func createStriketHroughStyle(text: String) -> NSMutableAttributedString {
+        let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: text)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
+        return attributeString
     }
 }
