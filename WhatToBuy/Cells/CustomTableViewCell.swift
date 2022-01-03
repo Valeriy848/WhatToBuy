@@ -32,7 +32,6 @@ internal final class CustomTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .lightGray
         setupUI()
     }
     
@@ -59,7 +58,7 @@ internal final class CustomTableViewCell: UITableViewCell {
             title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         ])
     }
-    
+
     func onCellTap() {
         let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: title.text ?? "")
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))

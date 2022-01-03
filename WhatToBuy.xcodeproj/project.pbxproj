@@ -11,6 +11,7 @@
 		9797656D2781D76A0043BEDE /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9797656C2781D76A0043BEDE /* CustomTableViewCell.swift */; };
 		97BD45732782D07A0030494E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BD45722782D07A0030494E /* UIView+Ext.swift */; };
 		97BD457C278316B80030494E /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BD457B278316B80030494E /* Element.swift */; };
+		97BD457F278317600030494E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BD457E278317600030494E /* Strings.swift */; };
 		97D15A722781773400BE4BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D15A712781773400BE4BD5 /* AppDelegate.swift */; };
 		97D15A742781773400BE4BD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D15A732781773400BE4BD5 /* SceneDelegate.swift */; };
 		97D15A762781773400BE4BD5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D15A752781773400BE4BD5 /* ListViewController.swift */; };
@@ -25,6 +26,7 @@
 		9797656C2781D76A0043BEDE /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		97BD45722782D07A0030494E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		97BD457B278316B80030494E /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		97BD457E278317600030494E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		97D15A6E2781773400BE4BD5 /* WhatToBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D15A712781773400BE4BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97D15A732781773400BE4BD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		97BD457D278317510030494E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97BD457E278317600030494E /* Strings.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		97D15A652781773400BE4BD5 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 				97976565278199D00043BEDE /* Main */,
 				9797656B2781D7510043BEDE /* Cells */,
 				97BD45712782D0670030494E /* Extensions */,
+				97BD457D278317510030494E /* Resources */,
 				97976563278199B90043BEDE /* AppFiles */,
 				97976564278199C70043BEDE /* Assets */,
 			);
@@ -202,6 +213,7 @@
 			files = (
 				97BD45732782D07A0030494E /* UIView+Ext.swift in Sources */,
 				97D15A762781773400BE4BD5 /* ListViewController.swift in Sources */,
+				97BD457F278317600030494E /* Strings.swift in Sources */,
 				97BD457C278316B80030494E /* Element.swift in Sources */,
 				97F2D06A2782293B00A7E080 /* ListViewWrapper.swift in Sources */,
 				9797656D2781D76A0043BEDE /* CustomTableViewCell.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+internal final class ListViewController: UIViewController {
     
     private lazy var presenter = ListPresenter()
 
@@ -17,8 +17,8 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.attachView(view: ListViewWrapper(view: view.originalType()))
-        presenter.getData()
+        let viewWrapper = ListViewWrapper(view: view.originalType(), presenter: presenter)
+        presenter.attachView(view: viewWrapper)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
