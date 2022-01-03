@@ -83,7 +83,7 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func cellTransition() {
+    private lazy var cellTransition = { [unowned self] in
         if let indexPath = currentIndexPath {
             switch indexPath.section {
             case 0:
