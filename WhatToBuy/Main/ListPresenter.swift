@@ -29,9 +29,9 @@ internal final class ListPresenter: ListPresenterActions {
                                         Element(title: "Картошка", date: Date()),
                                         Element(title: "Апельсины", date: Date()),
                                         Element(title: "Масло", date: Date()),
-                                        Element(title: "Колбаса", date: Date()),
-                                        Element(title: "Яйца", date: Date()),
-                                        Element(title: "Сыр", date: Date())])
+                                        Element(title: "Колбаса", date: Date())],
+                             chekedElements: [Element(title: "Яйца", date: Date()),
+                                              Element(title: "Сыр", date: Date())])
     }
     
     func addElement(title: String) {

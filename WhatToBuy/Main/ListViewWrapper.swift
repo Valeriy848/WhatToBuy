@@ -9,7 +9,7 @@ import UIKit
 
 internal protocol ListViewWrapperActions {
     func setupTableView()
-    func onDataReceived(elements: [Element])
+    func onDataReceived(elements: [Element], chekedElements: [Element])
     func insertElement(element: Element)
 }
 
@@ -17,7 +17,8 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
     
     private let view: ListView
     private let cellID = "cell"
-    private var elements: [Element] = []
+    private var elements: [Element]!
+    private var chekedElements: [Element]!
     private var addKeyboardButton: UIBarButtonItem!
     
     private let actions: ListPresenterActions?
@@ -43,8 +44,9 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
         view.addTextField.inputAccessoryView = createKeyboardAccessory()
     }
     
-    func onDataReceived(elements: [Element]) {
+    func onDataReceived(elements: [Element], chekedElements: [Element]) {
         self.elements = elements
+        self.chekedElements = chekedElements
         view.tableView.reloadData()
     }
     
@@ -53,13 +55,24 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
         view.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return elements.count
+        switch section {
+        case 0: return elements.count
+        case 1: return chekedElements.count
+        default: return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = CustomTableViewCell(text: elements[indexPath.row].title)
-        return cell
+        switch indexPath.section {
+        case 0: return CustomTableViewCell(text: elements[indexPath.row].title, checked: false)
+        case 1: return CustomTableViewCell(text: chekedElements[indexPath.row].title, checked: true)
+        default: return CustomTableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
