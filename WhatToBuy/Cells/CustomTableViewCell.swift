@@ -67,12 +67,14 @@ internal final class CustomTableViewCell: UITableViewCell {
         ])
     }
 
-    func onCellTap() {
+    func onCellTap(onTapAction: @escaping () -> Void) {
         title.attributedText = createStriketHroughStyle(text: title.text ?? "")
         
         UIView.animate(withDuration: 0.3) {
             self.tapBackgroundWidthAnchor.constant = UIScreen.main.bounds.width
             self.layoutIfNeeded()
+        } completion: { _ in
+            onTapAction()
         }
     }
     

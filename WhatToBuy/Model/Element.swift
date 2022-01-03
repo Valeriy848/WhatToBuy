@@ -9,5 +9,5 @@ import Foundation
 
 internal struct Element{
     let title: String
-    let date: Date
+    var date: Date
 }

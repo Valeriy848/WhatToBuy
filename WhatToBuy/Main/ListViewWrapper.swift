@@ -20,7 +20,8 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
     private var elements: [Element]!
     private var chekedElements: [Element]!
     private var addKeyboardButton: UIBarButtonItem!
-    
+    private var currentIndexPath: IndexPath?
+
     private let actions: ListPresenterActions?
         
     init(view: ListView, presenter: ListPresenterActions) {
@@ -77,8 +78,34 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? CustomTableViewCell
-        cell?.onCellTap()
+        currentIndexPath = indexPath
+        cell?.onCellTap(onTapAction: cellTransition)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func cellTransition() {
+        if let indexPath = currentIndexPath {
+            switch indexPath.section {
+            case 0:
+                var element = elements.remove(at: indexPath.row)
+                element.date = Date()
+                view.tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
+                
+                chekedElements.insert(element, at: 0)
+                view.tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .fade)
+            case 1:
+                var element = chekedElements.remove(at: indexPath.row)
+                element.date = Date()
+                view.tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 1)], with: .fade)
+                
+                elements.insert(element, at: 0)
+                view.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+            default:
+                break
+            }
+        }
+        
+        currentIndexPath = nil
     }
     
     private func createKeyboardAccessory() -> UIToolbar {
