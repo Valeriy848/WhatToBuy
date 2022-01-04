@@ -83,6 +83,21 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            switch indexPath.section {
+            case 0:
+                elements.remove(at: indexPath.row)
+                view.tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: indexPath.section)], with: .fade)
+            case 1:
+                chekedElements.remove(at: indexPath.row)
+                view.tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: indexPath.section)], with: .fade)
+            default:
+                break
+            }
+        }
+    }
+    
     private lazy var cellTransition = { [unowned self] in
         if let indexPath = currentIndexPath {
             switch indexPath.section {
