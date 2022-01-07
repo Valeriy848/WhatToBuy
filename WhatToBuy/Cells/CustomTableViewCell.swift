@@ -44,7 +44,7 @@ internal final class CustomTableViewCell: UITableViewCell {
         
         switch checked {
         case true:
-            backgroundColor = .lightGray
+            backgroundColor = .yellow
             title.attributedText = createStriketHroughStyle(text: title.text ?? "")
         case false:
             backgroundColor = .white
@@ -67,14 +67,26 @@ internal final class CustomTableViewCell: UITableViewCell {
         ])
     }
 
-    func onCellTap(onTapAction: @escaping () -> Void) {
+    func onCellTap(element: Element) {
         title.attributedText = createStriketHroughStyle(text: title.text ?? "")
+        
+        try! realm.write({
+            element.done.toggle()
+        })
+        
+        switch element.done {
+        case true:
+            tapBackground.backgroundColor = .yellow
+            title.attributedText = createStriketHroughStyle(text: element.title ?? "")
+        case false:
+            tapBackground.backgroundColor = .white
+            title.attributedText = nil
+            title.text = element.title
+        }
         
         UIView.animate(withDuration: 0.3) {
             self.tapBackgroundWidthAnchor.constant = UIScreen.main.bounds.width
             self.layoutIfNeeded()
-        } completion: { _ in
-            onTapAction()
         }
     }
     
