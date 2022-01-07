@@ -76,7 +76,7 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
     }
 
     private func createKeyboardAccessory() -> UIToolbar {
-        let keyboardToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 45))
+        let keyboardToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: Metrics.toolBarHeight))
         
         let hideKeyboardButton = UIBarButtonItem(title: Strings.hideKeyboard, style: .done, target: self, action: #selector(hideKeyboard))
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -100,4 +100,8 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
     @objc private func textFieldDidChange() {
         addKeyboardButton.isEnabled = !(view.addTextField.text?.isEmpty ?? true)
     }
+}
+
+private extension Metrics {
+    static let toolBarHeight: CGFloat = 45
 }

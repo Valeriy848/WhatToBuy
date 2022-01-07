@@ -38,17 +38,21 @@ internal final class ListView: UIView {
         
         addSubview(addTextField)
         NSLayoutConstraint.activate([
-            addTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            addTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            addTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            addTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Metrics.topOffset),
+            addTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.sideOffset),
+            addTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.sideOffset)
         ])
 
         addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: addTextField.bottomAnchor, constant: 8),
+            tableView.topAnchor.constraint(equalTo: addTextField.bottomAnchor, constant: Metrics.topOffset),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
+}
+
+private extension Metrics {
+    static let topOffset: CGFloat = 8
 }

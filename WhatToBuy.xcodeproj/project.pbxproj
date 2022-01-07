@@ -11,6 +11,7 @@
 		9764FFBF2786F40F0017A51E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9764FFBE2786F40F0017A51E /* StorageManager.swift */; };
 		979765672781D08B0043BEDE /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979765662781D08B0043BEDE /* ListView.swift */; };
 		9797656D2781D76A0043BEDE /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9797656C2781D76A0043BEDE /* CustomTableViewCell.swift */; };
+		97B695612788B67C00E55C6C /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B695602788B67C00E55C6C /* Metrics.swift */; };
 		97BD45732782D07A0030494E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BD45722782D07A0030494E /* UIView+Ext.swift */; };
 		97BD457C278316B80030494E /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BD457B278316B80030494E /* Element.swift */; };
 		97BD457F278317600030494E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BD457E278317600030494E /* Strings.swift */; };
@@ -28,6 +29,7 @@
 		9764FFBE2786F40F0017A51E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		979765662781D08B0043BEDE /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		9797656C2781D76A0043BEDE /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		97B695602788B67C00E55C6C /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		97BD45722782D07A0030494E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		97BD457B278316B80030494E /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		97BD457E278317600030494E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				97BD457E278317600030494E /* Strings.swift */,
+				97B695602788B67C00E55C6C /* Metrics.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				97BD457C278316B80030494E /* Element.swift in Sources */,
 				97F2D06A2782293B00A7E080 /* ListViewWrapper.swift in Sources */,
 				9797656D2781D76A0043BEDE /* CustomTableViewCell.swift in Sources */,
+				97B695612788B67C00E55C6C /* Metrics.swift in Sources */,
 				979765672781D08B0043BEDE /* ListView.swift in Sources */,
 				97D15A722781773400BE4BD5 /* AppDelegate.swift in Sources */,
 				97F2D06C2782294700A7E080 /* ListPresenter.swift in Sources */,
