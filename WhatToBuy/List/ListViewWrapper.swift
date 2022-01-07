@@ -13,7 +13,7 @@ internal protocol ListViewWrapperActions {
     func insertElement(element: Element)
 }
 
-internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableViewDataSource, ListViewWrapperActions {
+internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableViewDataSource, ListViewWrapperActions, UITextFieldDelegate {
 
     private let view: ListView
     private let cellID = "cell"
@@ -25,7 +25,10 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
     init(view: ListView, presenter: ListPresenterActions) {
         self.view = view
         actions = presenter
+    
         super.init()
+        
+        view.addTextField.delegate = self
         setupTableView()
     }
     
@@ -93,12 +96,23 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
     }
     
     @objc private func addElement() {
-        actions?.addElement(title: view.addTextField.text ?? "")
-        view.addTextField.text = nil
+        addElementAction()
     }
     
     @objc private func textFieldDidChange() {
         addKeyboardButton.isEnabled = !(view.addTextField.text?.isEmpty ?? true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        addElementAction()
+        return false
+    }
+    
+    private func addElementAction() {
+        if let text = view.addTextField.text, !text.isEmpty {
+            actions?.addElement(title: view.addTextField.text ?? "")
+            view.addTextField.text = nil
+        }
     }
 }
 
