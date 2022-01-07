@@ -60,10 +60,10 @@ internal final class CustomTableViewCell: UITableViewCell {
         
         addSubview(title)
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            title.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            title.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.titleOffset),
+            title.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.titleOffset),
+            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.sideOffset),
+            title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.sideOffset)
         ])
     }
 
@@ -77,14 +77,14 @@ internal final class CustomTableViewCell: UITableViewCell {
         switch element.done {
         case true:
             tapBackground.backgroundColor = .yellow
-            title.attributedText = createStriketHroughStyle(text: element.title ?? "")
+            title.attributedText = createStriketHroughStyle(text: element.title)
         case false:
             tapBackground.backgroundColor = .white
             title.attributedText = nil
             title.text = element.title
         }
         
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: Metrics.standartAnimationDuration) {
             self.tapBackgroundWidthAnchor.constant = UIScreen.main.bounds.width
             self.layoutIfNeeded()
         }
@@ -95,4 +95,8 @@ internal final class CustomTableViewCell: UITableViewCell {
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
         return attributeString
     }
+}
+
+private extension Metrics {
+    static let titleOffset: CGFloat = 10
 }

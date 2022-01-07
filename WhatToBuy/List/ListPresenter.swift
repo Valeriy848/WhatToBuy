@@ -20,7 +20,7 @@ internal final class ListPresenter: ListPresenterActions {
     func attachView(view: ListViewWrapperActions) {
         self.view = view
         
-        allElements = realm.objects(Element.self).sorted(byKeyPath: "date", ascending: false)
+        allElements = realm.objects(Element.self)
         
         getData()
     }
@@ -35,7 +35,7 @@ internal final class ListPresenter: ListPresenterActions {
     }
     
     func addElement(title: String) {
-        let element = Element(title: title, date: Date(), done: false)
+        let element = Element(title: title, done: false)
         StorageManager.saveObject(element)
         view?.insertElement(element: element)
     }
