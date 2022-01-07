@@ -77,7 +77,7 @@ internal final class CustomTableViewCell: UITableViewCell {
         switch element.done {
         case true:
             tapBackground.backgroundColor = .yellow
-            title.attributedText = createStriketHroughStyle(text: element.title ?? "")
+            title.attributedText = createStriketHroughStyle(text: element.title)
         case false:
             tapBackground.backgroundColor = .white
             title.attributedText = nil

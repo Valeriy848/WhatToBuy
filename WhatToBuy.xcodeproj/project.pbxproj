@@ -92,7 +92,7 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		97976565278199D00043BEDE /* Main */ = {
+		97976565278199D00043BEDE /* List */ = {
 			isa = PBXGroup;
 			children = (
 				97D15A752781773400BE4BD5 /* ListViewController.swift */,
@@ -100,7 +100,7 @@
 				97F2D0692782293B00A7E080 /* ListViewWrapper.swift */,
 				97F2D06B2782294700A7E080 /* ListPresenter.swift */,
 			);
-			path = Main;
+			path = List;
 			sourceTree = "<group>";
 		};
 		9797656B2781D7510043BEDE /* Cells */ = {
@@ -109,6 +109,14 @@
 				9797656C2781D76A0043BEDE /* CustomTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		97B6955F2788B3E100E55C6C /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				9764FFBE2786F40F0017A51E /* StorageManager.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		97BD45712782D0670030494E /* Extensions */ = {
@@ -156,12 +164,12 @@
 		97D15A702781773400BE4BD5 /* WhatToBuy */ = {
 			isa = PBXGroup;
 			children = (
-				9764FFBE2786F40F0017A51E /* StorageManager.swift */,
 				97BD457A2783169B0030494E /* Model */,
-				97976565278199D00043BEDE /* Main */,
+				97976565278199D00043BEDE /* List */,
 				9797656B2781D7510043BEDE /* Cells */,
 				97BD45712782D0670030494E /* Extensions */,
 				97BD457D278317510030494E /* Resources */,
+				97B6955F2788B3E100E55C6C /* Realm */,
 				97976563278199B90043BEDE /* AppFiles */,
 				97976564278199C70043BEDE /* Assets */,
 			);
