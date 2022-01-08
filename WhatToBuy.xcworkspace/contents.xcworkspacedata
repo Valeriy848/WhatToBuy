@@ -5,6 +5,9 @@
       location = "group:WhatToBuy.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:ext/UILib14.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
