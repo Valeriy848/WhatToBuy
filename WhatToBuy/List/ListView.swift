@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UILib14
 
 internal final class ListView: UIView {
     
@@ -20,6 +21,7 @@ internal final class ListView: UIView {
 
     let tableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = UI14Colors.baseNormal.color
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -34,7 +36,7 @@ internal final class ListView: UIView {
     }
     
     private func setupUI() {
-        backgroundColor = .white
+        backgroundColor = UI14Colors.baseNormal.color
         
         addSubview(addTextField)
         NSLayoutConstraint.activate([
