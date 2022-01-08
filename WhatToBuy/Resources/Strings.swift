@@ -8,6 +8,7 @@
 import Foundation
 
 internal final class Strings {
+    private init() {}
     static let newProduct = "+ Новый продукт"
     static let hideKeyboard = "Скрыть"
     static let addElement = "Добавить"
