@@ -65,9 +65,9 @@ internal final class ListViewWrapper: NSObject, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         let cell = tableView.cellForRow(at: indexPath) as? CustomTableViewCell
         cell?.onCellTap(element: elements[indexPath.row])
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

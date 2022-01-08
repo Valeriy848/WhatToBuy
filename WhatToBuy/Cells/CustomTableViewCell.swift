@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import UILib14
 
 internal final class CustomTableViewCell: UITableViewCell {
     
     let title: UILabel = {
         let title = UILabel()
+        title.textColor = UI14Colors.baseInverted.color
         title.numberOfLines = 1
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -18,7 +20,6 @@ internal final class CustomTableViewCell: UITableViewCell {
     
     let tapBackground: UIView = {
         let tapBackground = UIView()
-        tapBackground.backgroundColor = .yellow
         tapBackground.translatesAutoresizingMaskIntoConstraints = false
         return tapBackground
     }()
@@ -28,6 +29,7 @@ internal final class CustomTableViewCell: UITableViewCell {
     convenience init(text: String, checked: Bool) {
         self.init(frame: .zero)
         title.text = text
+        selectionStyle = .none
         setupUI(checked: checked)
     }
     
@@ -42,12 +44,14 @@ internal final class CustomTableViewCell: UITableViewCell {
     private func setupUI(checked: Bool) {
         tapBackgroundWidthAnchor = tapBackground.widthAnchor.constraint(equalToConstant: 0)
         
+        backgroundColor = UI14Colors.baseNormal.color
+        
         switch checked {
         case true:
-            backgroundColor = .yellow
             title.attributedText = createStriketHroughStyle(text: title.text ?? "")
+            backgroundColor = UI14Colors.lightGray.color
         case false:
-            backgroundColor = .white
+            print("fff")
         }
                 
         addSubview(tapBackground)
@@ -76,17 +80,20 @@ internal final class CustomTableViewCell: UITableViewCell {
         
         switch element.done {
         case true:
-            tapBackground.backgroundColor = .yellow
             title.attributedText = createStriketHroughStyle(text: element.title)
+            tapBackground.backgroundColor = UI14Colors.lightGray.color
         case false:
-            tapBackground.backgroundColor = .white
             title.attributedText = nil
             title.text = element.title
+            tapBackground.backgroundColor = UI14Colors.baseNormal.color
         }
         
         UIView.animate(withDuration: Metrics.standartAnimationDuration) {
             self.tapBackgroundWidthAnchor.constant = UIScreen.main.bounds.width
             self.layoutIfNeeded()
+        } completion: { _ in
+            self.backgroundColor = self.tapBackground.backgroundColor
+            self.tapBackgroundWidthAnchor.constant = 0
         }
     }
     
